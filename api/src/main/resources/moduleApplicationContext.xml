@@ -23,6 +23,35 @@
   		    http://www.springframework.org/schema/util
   		    http://www.springframework.org/schema/util/spring-util-3.0.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
     <context:component-scan base-package="org.openmrs.module.appointments"/>
+
+    <context:component-scan base-package="org.openmrs.module.appointments.api"/>
+
+    <bean id="fhirAppointmentDao" class="org.openmrs.module.appointments.api.dao.Impl.FhirAppointmentDaoImpl">
+        <property name="sessionFactory">
+            <ref bean="sessionFactory"/>
+        </property>
+    </bean>
+
+    <bean id="appointmentTranslator" class="org.openmrs.module.appointments.api.translators.Impl.AppointmentTranslatorImpl">
+    </bean>
+
+    <bean id="appointmentService" class="org.openmrs.module.appointments.api.Impl.FhirAppointmentServiceImpl">
+        <property name="fhirAppointmentDao">
+            <ref bean="fhirAppointmentDao"/>
+        </property>
+        <property name="appointmentTranslator">
+            <ref bean="appointmentTranslator"/>
+        </property>
+    </bean>
+
+
+
+
+
+
+
+
+
     <bean id="administrationService" name="administrationService" class="org.openmrs.api.impl.AdministrationServiceImpl"/>
     <bean parent="serviceContext">
         <property name="moduleService">

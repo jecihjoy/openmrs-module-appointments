@@ -38,6 +38,11 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
+			<groupId>org.openmrs.module</groupId>
+			<artifactId>fhir2-omod</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
 			<groupId>org.openmrs.test</groupId>
 			<artifactId>openmrs-test</artifactId>
 			<type>pom</type>
@@ -63,6 +68,12 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
+			<groupId>${project.parent.groupId}</groupId>
+			<artifactId>appnt-fhir2-api</artifactId>
+			<version>${project.parent.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
 			<scope>test</scope>
@@ -71,6 +82,26 @@
 			<groupId>org.openmrs.module</groupId>
 			<artifactId>webservices.rest-omod-common</artifactId>
 			<scope>provided</scope>
+		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>ca.uhn.hapi.fhir</groupId>-->
+<!--			<artifactId>hapi-fhir-base</artifactId>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>ca.uhn.hapi.fhir</groupId>-->
+<!--			<artifactId>hapi-fhir-server</artifactId>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>ca.uhn.hapi.fhir</groupId>-->
+<!--			<artifactId>hapi-fhir-structures-r4</artifactId>-->
+<!--		</dependency>-->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.inject</groupId>
+			<artifactId>javax.inject</artifactId>
 		</dependency>
 	</dependencies>
 
@@ -98,7 +129,10 @@
 						<includeEmptyDirs>true</includeEmptyDirs>
 					</configuration>
 				</plugin>
-
+				<plugin>
+					<groupId>org.projectlombok</groupId>
+					<artifactId>lombok-maven-plugin</artifactId>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 		<plugins>
